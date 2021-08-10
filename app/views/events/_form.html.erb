@@ -1,4 +1,4 @@
-<%= form_with(model: event, local: true) do |form| %>
+<%= form_with(model: event, local: true, class: "xform") do |form| %>
   <% if event.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
@@ -11,37 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :start_date %>
+  <div class="field>
+    <%= form.label :start_date %><br />
     <%= form.datetime_select :start_date %>
   </div>
 
   <div class="field">
-    <%= form.label :duration %>
+    <%= form.label :duration %><br />
     <%= form.number_field :duration %>
   </div>
 
   <div class="field">
-    <%= form.label :title %>
+    <%= form.label :title %><br />
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
+    <%= form.label :description %><br />
     <%= form.text_area :description %>
   </div>
 
   <div class="field">
-    <%= form.label :price %>
+    <%= form.label :price %><br />
     <%= form.number_field :price %>
   </div>
 
   <div class="field">
-    <%= form.label :location %>
+    <%= form.label :location %><br />
     <%= form.text_field :location %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Valider", class: "btn btn-primary m-2" %>
   </div>
 <% end %>

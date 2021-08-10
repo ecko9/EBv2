@@ -20,6 +20,11 @@
     text-decoration: none !important;
 }
 
+body {
+    background-color: #101010;
+    color: #fff;
+}
+
 /** HEADER **/
 header {
     height: 400px;
@@ -37,11 +42,12 @@ header img {
 .nav {
     display:flex;
     align-items: center;
-    background-color: #3d1039  !important;
+    background-color: #290b27  !important;
     display:flex;
     justify-content: flex-end;
     gap: 20px;
     height: 70px;
+    padding-right:20px;
 }
 
 .nav  a{
@@ -50,6 +56,7 @@ header img {
     text-decoration: none;
 }
 
+/** SURCOUCHE **/
 .btn-primary {
     background-color: #3d1039  !important;
     border: #3d1039  !important;
@@ -69,5 +76,20 @@ header img {
 
 }
 .bg-light {
-    background-color: lightgrey !important;
+    background-color: #290b27 !important;
+}
+
+/** EVENT LIST **/
+
+.xform {
+    background-color: #242424 !important;
+    border: 3px solid #3d1039;
+    padding: 40px;
+    display:flex;
+    flex-direction:column;
+    align-items: center;    
+}
+
+.xform .field {
+    margin: 10px;
 }
