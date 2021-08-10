@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: [:show, :new, :edit, :create, :update, :destroy]
 
   # GET /events or /events.json
   def index
@@ -22,6 +23,7 @@ class EventsController < ApplicationController
   # POST /events or /events.json
   def create
     @event = Event.new(event_params)
+    @event.administrator_id = current_user.id
 
     respond_to do |format|
       if @event.save

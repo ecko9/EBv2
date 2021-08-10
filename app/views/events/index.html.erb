@@ -1,17 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Events</h1>
-
-<table>
+<div class="p-5 mb-4 bg-light rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Accueil</h1>
+        <p class="col-md-8 fs-4">Ce site vous permet de voir et de participer à des événements autour de vous,<br/> ainsi que de proposer vos propres évenements à la communauté</p>    
+        <button class="btn btn-primary text-light"><%= link_to 'New Event', new_event_path, class: 'text-light text-decoration-none' %></button>
+      </div>
+</div>
+<div class="container-fluid bg-light d-flex justify-content-center">
+        <h2 class="d-inline-flex display-7 fw-bold">Events</h2>
+</div>
+<table class="table">
   <thead>
     <tr>
-      <th>Start date</th>
-      <th>Duration</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Location</th>
-      <th colspan="3"></th>
+      <th scope="col">Start date</th>
+      <th scope="col">Duration</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
+      <th scope="col">Location</th>
+      <th scope="col" colspan="3"></th>
     </tr>
   </thead>
 
@@ -24,9 +32,10 @@
         <td><%= event.description %></td>
         <td><%= event.price %></td>
         <td><%= event.location %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= event.administrator_id %></td>
+        <td class="btn btn-primary mx-3 "><%= link_to 'Show', event, class: 'text-light' %></td>
+        <td class="btn mx-3 btn-xw"><%= link_to 'Edit', edit_event_path(event), class: 'text-light' %></td>
+        <td class="btn mx-3 btn-xd"><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-light' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +43,4 @@
 
 <br>
 
-<%= link_to 'New Event', new_event_path %>
+

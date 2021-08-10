@@ -1,34 +1,46 @@
 <p id="notice"><%= notice %></p>
+<div class="container-fluid bg-light d-flex flex-column align-items-center justify-content-evenly border border-1 col-6">
+  <p>
+    <strong>Administrateur:</strong><br/>
+    <p><%= @event.administrator.first_name %></p>
+    <p><%= @event.administrator.last_name %></p>
+    <p><%= @event.administrator.email %></p>
+    <button class="btn btn-primary"><%= link_to 'Profile', user_path(@event.administrator.id), class: 'text-light' %></button><br/>
+  </p>
 
-<p>
-  <strong>Start date:</strong>
-  <%= @event.start_date %>
-</p>
+  <p>
+    <strong>Start date:</strong>
+    <%= @event.start_date %>
+  </p>
 
-<p>
-  <strong>Duration:</strong>
-  <%= @event.duration %>
-</p>
+  <p>
+    <strong>Duration:</strong>
+    <%= @event.duration %>
+  </p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
+  <p>
+    <strong>Nom de l'Event:</strong>
+    <%= @event.title %>
+  </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
+  <p>
+    <strong>Informations:</strong>
+    <%= @event.description %>
+  </p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @event.price %>
-</p>
+  <p>
+    <strong>Inscription:</strong>
+    <%= @event.price %>
+  </p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @event.location %>
-</p>
+  <p>
+    <strong>Lieu:</strong>
+    <%= @event.location %>
+  </p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<% if current_user.id == @event.administrator.id %>
+  <%= link_to 'Modifier', edit_event_path(@event) %> |
+<% end %>
+  <%= link_to 'Retour', events_path %>
+
+</div>

@@ -10,8 +10,23 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+    <header>
+    <div class="nav">
+      <div><%= link_to "Accueil", root_path %></div>
+      <div><%= link_to "Edit email / password", edit_user_registration_path %></div>
+      <div><%= link_to "Secret page", static_pages_secret_path %></div>
+      <% if user_signed_in? %>
+        <div><%= link_to "Sign out", destroy_user_session_path, method: :delete %></div>
+        <div><%= link_to "Profile", user_path(current_user) %></div>
+      <% else %>
+        <div><%= link_to "Sign in", new_user_session_path %></div>
+        <div><%= link_to "Sign up", new_user_registration_path %></div>
+      <% end %>
+    </div>
+
+    <img src="https://www.thebalancesmb.com/thmb/8tBxbptk4SV2ybxHFBkJ-kYGdhI=/2166x1384/filters:fill(auto,1)/business-meeting-5a21939198020700365c1e3f-5b798f9046e0fb0050056402.jpg" alt="banner">
+    </header>
     <%= yield %>
   </body>
 </html>

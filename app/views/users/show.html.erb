@@ -1,19 +1,49 @@
 <p id="notice"><%= notice %></p>
+<h2 class="text-center m-5">Bienvenue sur le profil de <%= @user.first_name + " " + @user.last_name %> </h2>
 
-<p>
-  <strong>Description:</strong>
-  <%= @user.description %>
-</p>
+<div class="container-fluid d-flex justify-content-flex flex-direction-column">
+  
+  <!-- USER INFOS -->
+  <div class="d-flex justify-content-center flex-column col-6 ">
+    <h4>Description</h4>
+    <p>
+      <%= @user.description %>
+    </p>
+    <p><em>Vous pouvez me joindre ici => <%= @user.email%></em></p>
+    <%= button_to 'Edit Important Informations', edit_user_registration_path, class: 'text-light btn btn-primary', method: :get %>
+    <%= button_to 'Edit Profile', edit_user_path(@user), class: 'text-light btn btn-primary', method: :get %>
+  </div>
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
+  <!-- EVENT A VENIR -->  
+  <% if @user_futur_events %>
+    <div class="border border-1 bg-light p-5">
+      <h3 class="text-center">Participe à ces Events</h3>
+      <% @user_futur_events.each do |event| %>
+        <p>Titre: <%= event.title %></p>
+        <p>Description: <%= event.description %></p>
+        <p>Date de début: <%= event.start_date %></p>
+        <p>Durée: <%= event.duration %></p>
+        <p>Prix: <%= event.price %></p>
+        <p>Localisation: <%= event.location %></p>
+        <br />
+      <% end %>
+    </div>
+  <% end %>
+  
+  <!-- EVENT A ADMINISTRER -->
+  <% if @user_administrate %>
+    <div class="border border-1 bg-light p-5">
+      <h3>Vos Events </h3 >
+      <% @user_administrate.each do |event| %>
+          <p>Titre: <%= event.title %></p>
+          <p>Description: <%= event.description %></p>
+          <p>Date de début: <%= event.start_date %></p>
+          <p>Durée: <%= event.duration %></p>
+          <p>Prix: <%= event.price %></p>
+          <p>Localisation: <%= event.location %></p>
+          <br />
+      <% end %>
+    </div>
+  <% end %>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+</div>
